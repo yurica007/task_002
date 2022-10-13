@@ -31,6 +31,8 @@ public:
 	int getWindowWidth();
 	int getWindowHeight();
 
+	int getItemIndex() { return m_cursor.getSelectIndex(); }
+
 private:
 	class Item
 	{
@@ -49,6 +51,8 @@ private:
 	private:
 		// 表示する文字列
 		const char* m_text;
+
+		bool checkItem;
 	};
 
 	class Cursor
@@ -65,6 +69,9 @@ private:
 		void setMenuPos(Vec2 pos) { m_menuPos = pos; }
 		void setSize(Vec2 size) { m_size = size; }
 		void setItemNum(int num) { m_itemNum = num; }
+
+		int getSelectIndex() { return m_selectIndex; }
+
 	private:
 		// メニューの表示位置
 		Vec2 m_menuPos;
@@ -79,8 +86,6 @@ private:
 
 		// 選択している項目の番号
 		int m_selectIndex;
-
-		bool checkCursor;
 	};
 
 private:

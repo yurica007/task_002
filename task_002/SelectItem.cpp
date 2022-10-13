@@ -4,8 +4,18 @@
 
 namespace
 {
-	// ÉÅÉjÉÖÅ[çÄñ⁄ÇÃä‘äu
-	constexpr int kMenuItemInterval = 200;
+	// éläpÇÃíÜâõÇÃà íu
+//	constexpr float kCenterPosX = 640.0f;
+//	constexpr float kCenterPosY = 500.0f;
+
+	// éläpÇÃècâ°ÇÃîºåa
+//	constexpr float kWidthLen = 360.0f;
+//	constexpr float kHeightLen = 120.0f;
+
+	constexpr float kSetPosX = 450.0f;
+	constexpr float kSetPosY = 420.0f;
+
+	constexpr float kCircleRadius = 5.0f;
 }
 
 // =====================================
@@ -23,7 +33,7 @@ SelectItem::Item::~Item()
 
 void SelectItem::Item::draw(int x, int y)
 {
-	DrawString(x, y, m_text, GetColor(255, 130, 0));
+	DrawString(x, y, m_text, GetColor(255, 255, 255));
 }
 
 void SelectItem::Item::setText(const char* text)
@@ -35,6 +45,7 @@ int SelectItem::Item::getText()
 {
 	return GetDrawStringWidth(m_text, strlen(m_text));
 }
+
 // =====================================
 // SelectMenu::Cursor
 // =====================================
@@ -42,8 +53,8 @@ SelectItem::Cursor::Cursor()
 {
 	m_selectIndex = 0;
 	m_itemNum = 0;
-	m_repeatLeft = 0;
-	m_repeatRight = 0;
+	m_repeatUp = 0;
+	m_repeatDown = 0;
 }
 
 SelectItem::Cursor::~Cursor()
@@ -53,16 +64,16 @@ SelectItem::Cursor::~Cursor()
 
 void SelectItem::Cursor::update()
 {
-	if (Pad::isPress(PAD_INPUT_LEFT))
+	if (Pad::isPress(PAD_INPUT_UP))
 	{
-		if (m_repeatLeft <= 0)
+		if (m_repeatUp <= 0)
 		{
 			m_selectIndex--;
-			m_repeatLeft = 8;
+			m_repeatUp = 8;
 			// ç∂âEÉãÅ[Év
 			if (m_selectIndex < 0)
 			{
-				if (Pad::isPress(PAD_INPUT_LEFT))
+				if (Pad::isPress(PAD_INPUT_UP))
 				{
 					m_selectIndex = m_itemNum - 1;
 				}
@@ -74,23 +85,23 @@ void SelectItem::Cursor::update()
 		}
 		else
 		{
-			m_repeatLeft--;
+			m_repeatUp--;
 		}
 	}
 	else
 	{
-		m_repeatLeft = 0;
+		m_repeatUp = 0;
 	}
 
-	if (Pad::isPress(PAD_INPUT_RIGHT))
+	if (Pad::isPress(PAD_INPUT_DOWN))
 	{
-		if (m_repeatRight <= 0)
+		if (m_repeatDown <= 0)
 		{
 			m_selectIndex++;
-			m_repeatRight = 8;
+			m_repeatDown = 8;
 			if (m_selectIndex > m_itemNum - 1)
 			{
-				if (Pad::isPress(PAD_INPUT_RIGHT))
+				if (Pad::isPress(PAD_INPUT_DOWN))
 				{
 					m_selectIndex = 0;
 				}
@@ -102,21 +113,22 @@ void SelectItem::Cursor::update()
 		}
 		else
 		{
-			m_repeatRight--;
+			m_repeatDown--;
 		}
 	}
 	else
 	{
-		m_repeatRight = 0;
+		m_repeatDown = 0;
 	}
 }
 
 void SelectItem::Cursor::draw()
 {
-	int posX = m_menuPos.x + kMenuItemInterval * m_selectIndex;
-	int posY = m_menuPos.y;
+	int posX = m_menuPos.x - 20;
+	int posY = m_menuPos.y + 30 * m_selectIndex + 5;
 
-	DrawBox(posX, posY, posX + m_size.x, posY + m_size.y, GetColor(255, 0, 0), false);
+	DrawCircle(posX, posY, kCircleRadius, GetColor(255, 255, 255), true);
+//	DrawBox(posX, posY, posX + m_size.x, posY + m_size.y, GetColor(255, 0, 0), false);
 }
 
 // =====================================
@@ -124,8 +136,8 @@ void SelectItem::Cursor::draw()
 // =====================================
 SelectItem::SelectItem()
 {
-	m_pos.x = 0.0f;
-	m_pos.y = 0.0f;
+	m_pos.x = kSetPosX;
+	m_pos.y = kSetPosY;
 }
 
 SelectItem::~SelectItem()
@@ -154,12 +166,12 @@ void SelectItem::update()
 
 void SelectItem::draw()
 {
-	int width = getWindowWidth();
-	int height = getWindowHeight();
+//	int width = getWindowWidth();
+//	int height = getWindowHeight();
 
 	for (int i = 0; i < m_pItem.size(); i++)
 	{
-		m_pItem[i]->draw(m_pos.x + i * kMenuItemInterval, m_pos.y);
+		m_pItem[i]->draw(m_pos.x, m_pos.y + i * 30);
 	}
 	m_cursor.draw();
 }
@@ -178,6 +190,9 @@ void SelectItem::setPos(float x, float y)
 
 void SelectItem::setPos(Vec2 pos)
 {
+	pos.x = kSetPosX;
+	pos.y = kSetPosY;
+
 	m_pos = pos;
 }
 
@@ -186,7 +201,6 @@ void SelectItem::addItem(const char* text)
 	Item* pItem = new Item;
 	pItem->setText(text);
 	m_pItem.push_back(pItem);
-
 }
 
 int SelectItem::getWindowWidth()
@@ -213,5 +227,5 @@ int SelectItem::getWindowHeight()
 			height = pItem->getText();
 		}
 	}
-	return height / 2;
+	return height;
 }

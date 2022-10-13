@@ -14,6 +14,7 @@ namespace
 SelectMenu::Item::Item()
 {
 	m_text = nullptr;
+	checkItem = false;
 }
 
 SelectMenu::Item::~Item()
@@ -24,6 +25,10 @@ SelectMenu::Item::~Item()
 void SelectMenu::Item::draw(int x, int y)
 {
 	DrawString(x, y, m_text, GetColor(255, 130, 0));
+	if (checkItem)
+	{
+		DrawString(x, y, m_text, GetColor(255, 0, 0));
+	}
 }
 
 void SelectMenu::Item::setText(const char* text)
@@ -44,7 +49,6 @@ SelectMenu::Cursor::Cursor()
 	m_itemNum = 0;
 	m_repeatLeft = 0;
 	m_repeatRight = 0;
-	checkCursor = false;
 }
 
 SelectMenu::Cursor::~Cursor()
@@ -155,9 +159,6 @@ void SelectMenu::update()
 
 void SelectMenu::draw()
 {
-	int width = getWindowWidth();
-	int height = getWindowHeight();
-
 	for (int i = 0; i < m_pItem.size(); i++)
 	{
 		m_pItem[i]->draw(m_pos.x + i * kMenuItemInterval, m_pos.y);

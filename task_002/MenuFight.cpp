@@ -55,7 +55,7 @@ void MenuFight::update()
 	m_damageCursorPos.x += m_damageCursorVec;
 	m_damageCursorCenterX = m_damageCursorPos.x + kCursorWidth / 2;
 
-	if (Pad::isPress(PAD_INPUT_2))
+	if (Pad::isPress(PAD_INPUT_3))
 	{
 		m_damageCursorVec = 0.0f;
 		m_isEnd = true;
@@ -71,7 +71,7 @@ void MenuFight::update()
 
 	}
 
-	if (m_damageCursorPos.x >= 1000.0f)
+	if ((m_damageCursorPos.x + kCursorWidth) >= 1000.0f)
 	{
 		m_damageCursorVec = 0.0f;
 		m_isEnd = true;

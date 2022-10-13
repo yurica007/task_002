@@ -1,4 +1,6 @@
 #pragma once
+
+#include <vector>
 #include "SceneBase.h"
 #include "SelectMenu.h"
 #include "MenuFight.h"
@@ -8,12 +10,10 @@ class SceneMain : public SceneBase
 {
 public:
 	SceneMain() {
-		m_textPosY = 0;
-		m_textVecY = 0;
-
+		m_pCheckMenu = false;
 		m_isEnd = false;
-		m_checkFight = false;
-		m_checkItem = false;
+		m_pCheckFight = false;
+		m_pCheckItem = false;
 	}
 	virtual ~SceneMain() {}
 
@@ -23,16 +23,17 @@ public:
 	virtual void draw();
 	virtual bool isEnd() { return m_isEnd; }
 private:
-	int m_textPosY;
-	int m_textVecY;
-
-	SelectMenu m_menu;
-
 	bool m_isEnd;
 
-	MenuFight m_fight;
-	bool m_checkFight;
-
-	MenuItem m_item;
-	bool m_checkItem;
+	// 行動の選択項目
+	SelectMenu m_pMenu;
+	bool m_pCheckMenu;
+	
+	// FIGHT項目の行動
+	MenuFight m_pFight;
+	bool m_pCheckFight;
+	
+	// ITEM項目の行動
+	MenuItem m_pItem;
+	bool m_pCheckItem;
 };

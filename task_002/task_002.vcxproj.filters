@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ソース ファイル\Menu">
+      <UniqueIdentifier>{26652e9d-1544-4cbd-83bd-7cc53fd38e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Menu">
+      <UniqueIdentifier>{b47a377c-fe60-4135-abd9-ff0057f64786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{7ad4fa55-2c94-4fb4-9faa-e015eedd73ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scene">
+      <UniqueIdentifier>{ec35024e-4698-48c8-a5a8-c7ea17b41b69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,35 +33,35 @@
     <ClCompile Include="Vec2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Pad.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneBase.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneTitle.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="SelectMenu.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="MenuFight.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuItem.cpp">
+    <ClCompile Include="SelectItem.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="MenuBase.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="SelectItem.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="MenuFight.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuItem.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,35 +71,35 @@
     <ClInclude Include="Vec2.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Pad.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneBase.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMain.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneTitle.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="SelectMenu.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="MenuFight.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuItem.h">
+    <ClInclude Include="SelectItem.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="MenuBase.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="SelectItem.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="MenuFight.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuItem.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,60 +13,71 @@ namespace
 
 void SceneMain::init()
 {
-	m_textPosY = 0;
-	m_textVecY = 4;
-
 	m_isEnd = false;
 
-	m_menu.init();
-	m_menu.addItem("FIGHT");
-	m_menu.addItem("ACT");
-	m_menu.addItem("ITEM");
-	m_menu.addItem("MERCY");
+	m_pCheckMenu = true;
+	m_pMenu.init();
 
-	m_menu.setPos(320, 660);
-	m_menu.setupCursor();
+	m_pMenu.addItem("FIGHT");
+	m_pMenu.addItem("ACT");
+	m_pMenu.addItem("ITEM");
+	m_pMenu.addItem("MERCY");
+	
+	m_pMenu.setPos(320, 660);
+	m_pMenu.setupCursor();
+	
+	m_pCheckFight = false;
+	m_pFight.init();
 
-	m_checkFight = false;
-	m_fight.init();
-
-	m_checkItem = false;
-	m_item.init();
+	m_pCheckItem = false;
+	m_pItem.init();
 }
 
 void SceneMain::end()
 {
-	m_menu.end();
-	m_fight.end();
-	m_item.end();
+	m_pMenu.end();
+	m_pFight.end();
+	m_pItem.end();
 }
 
 void SceneMain::update()
 {
-	if (Pad::isTrigger(PAD_INPUT_1))
+	if (Pad::isTrigger(PAD_INPUT_2))
 	{
 		m_isEnd = true;
 	}
-
-	if (Pad::isPress(PAD_INPUT_3))
+	switch (m_pMenu.getItemIndex())
 	{
-		m_checkFight = true;
+	
+	case 0:
+		if (Pad::isTrigger(PAD_INPUT_1))
+		{
+			m_pCheckMenu = false;
+			m_pCheckFight = true;
+		}
+		break;
+	case 2:
+		if (Pad::isTrigger(PAD_INPUT_1))
+		{
+			m_pCheckMenu = false;
+			m_pCheckItem = true;
+		}
+		break;
+	default:
+		break;
 	}
 
-	if (Pad::isPress(PAD_INPUT_4))
-	{
-		m_checkItem = true;
-	}
-	m_menu.update();
-	if (m_checkFight) m_fight.update();
-	if (m_checkItem) m_item.update();
+	if (m_pCheckMenu) m_pMenu.update();
+	if (m_pCheckFight) m_pFight.update();
+	if (m_pCheckItem) m_pItem.update();
 }
 
 void SceneMain::draw()
 {
 	DrawBox(kCenterPosX - kWidthLen, kCenterPosY - kHeightLen,
 		kCenterPosX + kWidthLen, kCenterPosY + kHeightLen, GetColor(255, 255, 255), false);
-	m_menu.draw();
-	if (m_checkFight) m_fight.draw();
-	if (m_checkItem) m_item.draw();
+
+	if (m_pCheckMenu) m_pMenu.draw();
+	if (m_pCheckFight) m_pFight.draw();
+	if (m_pCheckItem) m_pItem.draw();
 }
