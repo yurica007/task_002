@@ -3,11 +3,11 @@
 #include <vector>
 #include "Vec2.h"
 
-class SelectMenu
+class SelectItem
 {
 public:
-	SelectMenu();
-	virtual ~SelectMenu();
+	SelectItem();
+	virtual ~SelectItem();
 
 	// ‰Šú‰»AI—¹ˆ—
 	void init();
@@ -79,8 +79,6 @@ private:
 
 		// ‘I‘ğ‚µ‚Ä‚¢‚é€–Ú‚Ì”Ô†
 		int m_selectIndex;
-
-		bool checkCursor;
 	};
 
 private:

@@ -2,6 +2,7 @@
 #include "SceneBase.h"
 #include "SelectMenu.h"
 #include "MenuFight.h"
+#include "MenuItem.h"
 
 class SceneMain : public SceneBase
 {
@@ -9,8 +10,10 @@ public:
 	SceneMain() {
 		m_textPosY = 0;
 		m_textVecY = 0;
+
 		m_isEnd = false;
 		m_checkFight = false;
+		m_checkItem = false;
 	}
 	virtual ~SceneMain() {}
 
@@ -29,4 +32,7 @@ private:
 
 	MenuFight m_fight;
 	bool m_checkFight;
+
+	MenuItem m_item;
+	bool m_checkItem;
 };

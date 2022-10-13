@@ -1,4 +1,4 @@
-#include "SelectMenu.h"
+#include "SelectItem.h"
 #include "DxLib.h"
 #include "Pad.h"
 
@@ -11,48 +11,47 @@ namespace
 // =====================================
 // SelectMenu::Item
 // =====================================
-SelectMenu::Item::Item()
+SelectItem::Item::Item()
 {
 	m_text = nullptr;
 }
 
-SelectMenu::Item::~Item()
+SelectItem::Item::~Item()
 {
 
 }
 
-void SelectMenu::Item::draw(int x, int y)
+void SelectItem::Item::draw(int x, int y)
 {
 	DrawString(x, y, m_text, GetColor(255, 130, 0));
 }
 
-void SelectMenu::Item::setText(const char* text)
+void SelectItem::Item::setText(const char* text)
 {
 	m_text = text;
 }
 
-int SelectMenu::Item::getText()
+int SelectItem::Item::getText()
 {
 	return GetDrawStringWidth(m_text, strlen(m_text));
 }
 // =====================================
 // SelectMenu::Cursor
 // =====================================
-SelectMenu::Cursor::Cursor()
+SelectItem::Cursor::Cursor()
 {
 	m_selectIndex = 0;
 	m_itemNum = 0;
 	m_repeatLeft = 0;
 	m_repeatRight = 0;
-	checkCursor = false;
 }
 
-SelectMenu::Cursor::~Cursor()
+SelectItem::Cursor::~Cursor()
 {
 
 }
 
-void SelectMenu::Cursor::update()
+void SelectItem::Cursor::update()
 {
 	if (Pad::isPress(PAD_INPUT_LEFT))
 	{
@@ -112,7 +111,7 @@ void SelectMenu::Cursor::update()
 	}
 }
 
-void SelectMenu::Cursor::draw()
+void SelectItem::Cursor::draw()
 {
 	int posX = m_menuPos.x + kMenuItemInterval * m_selectIndex;
 	int posY = m_menuPos.y;
@@ -123,22 +122,22 @@ void SelectMenu::Cursor::draw()
 // =====================================
 // SelectMenu
 // =====================================
-SelectMenu::SelectMenu()
+SelectItem::SelectItem()
 {
 	m_pos.x = 0.0f;
 	m_pos.y = 0.0f;
 }
 
-SelectMenu::~SelectMenu()
+SelectItem::~SelectItem()
 {
 
 }
 
-void SelectMenu::init()
+void SelectItem::init()
 {
 
 }
-void SelectMenu::end()
+void SelectItem::end()
 {
 	for (auto& pItem : m_pItem)
 	{
@@ -148,12 +147,12 @@ void SelectMenu::end()
 
 }
 
-void SelectMenu::update()
+void SelectItem::update()
 {
 	m_cursor.update();
 }
 
-void SelectMenu::draw()
+void SelectItem::draw()
 {
 	int width = getWindowWidth();
 	int height = getWindowHeight();
@@ -165,24 +164,24 @@ void SelectMenu::draw()
 	m_cursor.draw();
 }
 
-void SelectMenu::setupCursor()
+void SelectItem::setupCursor()
 {
 	m_cursor.setMenuPos(m_pos);
 	m_cursor.setSize(Vec2(getWindowWidth(), getWindowHeight()));
 	m_cursor.setItemNum(m_pItem.size());
 }
 
-void SelectMenu::setPos(float x, float y)
+void SelectItem::setPos(float x, float y)
 {
 	setPos(Vec2(x, y));
 }
 
-void SelectMenu::setPos(Vec2 pos)
+void SelectItem::setPos(Vec2 pos)
 {
 	m_pos = pos;
 }
 
-void SelectMenu::addItem(const char* text)
+void SelectItem::addItem(const char* text)
 {
 	Item* pItem = new Item;
 	pItem->setText(text);
@@ -190,7 +189,7 @@ void SelectMenu::addItem(const char* text)
 
 }
 
-int SelectMenu::getWindowWidth()
+int SelectItem::getWindowWidth()
 {
 	int width = 0;
 	// 一番広いメニュー項目の幅をウィンドウサイズにする
@@ -203,7 +202,7 @@ int SelectMenu::getWindowWidth()
 	}
 	return width;
 }
-int SelectMenu::getWindowHeight()
+int SelectItem::getWindowHeight()
 {
 	int height = 0;
 	// 一番広いメニュー項目の幅をウィンドウサイズにする

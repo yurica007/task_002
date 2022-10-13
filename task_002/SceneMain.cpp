@@ -4,11 +4,11 @@
 
 namespace
 {
-	constexpr int kCenterPosX = 640;
-	constexpr int kCenterPosY = 500;
+	constexpr float kCenterPosX = 640.0f;
+	constexpr float kCenterPosY = 500.0f;
 
-	constexpr int kWidthLen = 360;
-	constexpr int kHeightLen = 120;
+	constexpr float kWidthLen = 360.0f;
+	constexpr float kHeightLen = 120.0f;
 }
 
 void SceneMain::init()
@@ -29,12 +29,16 @@ void SceneMain::init()
 
 	m_checkFight = false;
 	m_fight.init();
+
+	m_checkItem = false;
+	m_item.init();
 }
 
 void SceneMain::end()
 {
 	m_menu.end();
 	m_fight.end();
+	m_item.end();
 }
 
 void SceneMain::update()
@@ -48,8 +52,14 @@ void SceneMain::update()
 	{
 		m_checkFight = true;
 	}
+
+	if (Pad::isPress(PAD_INPUT_4))
+	{
+		m_checkItem = true;
+	}
 	m_menu.update();
 	if (m_checkFight) m_fight.update();
+	if (m_checkItem) m_item.update();
 }
 
 void SceneMain::draw()
@@ -58,4 +68,5 @@ void SceneMain::draw()
 		kCenterPosX + kWidthLen, kCenterPosY + kHeightLen, GetColor(255, 255, 255), false);
 	m_menu.draw();
 	if (m_checkFight) m_fight.draw();
+	if (m_checkItem) m_item.draw();
 }
