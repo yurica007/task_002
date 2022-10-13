@@ -1,9 +1,10 @@
 #pragma once
 
+#include "MenuBase.h"
 #include "Vec2.h"
 #include "SelectMenu.h"
 
-class MenuFight
+class MenuFight : public MenuBase
 {
 public:
 	MenuFight();
@@ -14,7 +15,7 @@ public:
 	virtual void update();
 	virtual void draw();
 
-	virtual bool inEnd() { return m_isEnd; }
+	virtual bool isEnd() { return m_isEnd; }
 
 private:
 	// 攻撃カーソルの横の座標情報
