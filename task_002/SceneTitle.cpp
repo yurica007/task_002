@@ -4,11 +4,11 @@
 
 namespace
 {
-	constexpr int kTitlePosX = 600;
+	constexpr int kTitlePosX = 500;
 	constexpr int kTitlePosY = 360;
 
-	constexpr int kTextPosX = 610;
-	constexpr int kTextPosY = 390;
+	constexpr int kTextPosX = 580;
+	constexpr int kTextPosY = 500;
 }
 
 void SceneTitle::init()
@@ -23,7 +23,7 @@ void SceneTitle::end()
 
 void SceneTitle::update()
 {
-	if (Pad::isTrigger(PAD_INPUT_1))
+	if (CheckHitKey(KEY_INPUT_RETURN))
 	{
 		m_isEnd = true;
 	}
@@ -31,6 +31,10 @@ void SceneTitle::update()
 
 void SceneTitle::draw()
 {
+	SetFontSize(32);
 	DrawString(kTitlePosX, kTitlePosY, "タイトル表示確認", GetColor(255, 255, 255));
-	DrawString(kTextPosX, kTextPosY, "Plese Pless Z", GetColor(255, 255, 255));
+	SetFontSize(16);
+	
+//	DrawString(kTextPosX, kTextPosY, "You'r name is", GetColor(255, 255, 255));
+//	KeyInputString(kTextPosX, kTextPosY + 30, kNameNum, neme, false);
 }

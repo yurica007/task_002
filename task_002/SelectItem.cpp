@@ -147,7 +147,6 @@ void SelectItem::end()
 		delete pItem;
 	}
 	m_pItem.clear();
-
 }
 
 void SelectItem::update()
@@ -222,17 +221,11 @@ void SelectItem::displayItem()
 {
 	switch (m_cursor.getSelectIndex())
 	{
-	case 0:
-		DrawString(kSetPosX, kSetPosY, "‚ ", GetColor(255, 255, 255));
-	case 1:
-		DrawString(kSetPosX, kSetPosY, "‚¢", GetColor(255, 255, 255));
-	case 2:
-		DrawString(kSetPosX, kSetPosY, "‚¤", GetColor(255, 255, 255));
-	case 3:
-		DrawString(kSetPosX, kSetPosY, "‚¦", GetColor(255, 255, 255));
-	case 4:
-		DrawString(kSetPosX, kSetPosY, "‚¨", GetColor(255, 255, 255));
-	default:
-		break;
+	case 0:DrawStringF(kSetPosX, kSetPosY, "‚ ", GetColor(255, 255, 255)); break;
+	case 1:DrawStringF(kSetPosX, kSetPosY, "‚¢", GetColor(255, 255, 255)); break;
+	case 2:DrawStringF(kSetPosX, kSetPosY, "‚¤", GetColor(255, 255, 255)); break;
+	case 3:DrawStringF(kSetPosX, kSetPosY, "‚¦", GetColor(255, 255, 255)); break;
+	case 4:DrawStringF(kSetPosX, kSetPosY, "‚¨", GetColor(255, 255, 255)); break;
+	default: break;
 	}
 }

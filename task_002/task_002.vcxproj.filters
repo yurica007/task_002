@@ -63,6 +63,9 @@
     <ClCompile Include="SceneTitle.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="MenuStatus.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="SceneTitle.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuStatus.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
