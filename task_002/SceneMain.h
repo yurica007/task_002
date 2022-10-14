@@ -14,6 +14,7 @@ public:
 		m_isEnd = false;
 		m_pCheckFight = false;
 		m_pCheckItem = false;
+		frameCount = 0;
 	}
 	virtual ~SceneMain() {}
 
@@ -36,4 +37,6 @@ private:
 	// ITEM€–Ú‚Ìs“®
 	MenuItem m_pItem;
 	bool m_pCheckItem;
+
+	int frameCount;
 };

@@ -31,6 +31,8 @@ void SceneMain::init()
 
 	m_pCheckItem = false;
 	m_pItem.init();
+
+	frameCount = 30;
 }
 
 void SceneMain::end()
@@ -68,8 +70,16 @@ void SceneMain::update()
 	}
 
 	if (m_pCheckMenu) m_pMenu.update();
-	if (m_pCheckFight) m_pFight.update();
-	if (m_pCheckItem) m_pItem.update();
+	
+	if (frameCount > 0)
+	{
+		frameCount--;
+	}
+	else
+	{
+		if (m_pCheckFight) m_pFight.update();
+		if (m_pCheckItem) m_pItem.update();
+	}
 }
 
 void SceneMain::draw()
