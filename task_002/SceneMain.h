@@ -1,10 +1,10 @@
 #pragma once
 
-#include <vector>
 #include "SceneBase.h"
 #include "SelectMenu.h"
 #include "MenuFight.h"
 #include "MenuItem.h"
+#include "MenuStatus.h"
 
 class SceneMain : public SceneBase
 {
@@ -14,7 +14,8 @@ public:
 		m_isEnd = false;
 		m_pCheckFight = false;
 		m_pCheckItem = false;
-		frameCount = 0;
+		m_pCheckStatus = false;
+		waitCount = 0;
 	}
 	virtual ~SceneMain() {}
 
@@ -38,5 +39,8 @@ private:
 	MenuItem m_pItem;
 	bool m_pCheckItem;
 
-	int frameCount;
+	MenuStatus m_pStatus;
+	bool m_pCheckStatus;
+
+	int waitCount;
 };

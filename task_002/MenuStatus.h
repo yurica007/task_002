@@ -2,6 +2,7 @@
 
 #include "MenuBase.h"
 #include "SceneTitle.h"
+#include "Vec2.h"
 
 class MenuStatus : public MenuBase
 {
@@ -17,7 +18,8 @@ public:
 	bool isEnd() { return m_isEnd; }
 
 private:
-	SceneTitle m_name;
+	Vec2 m_namePos;
+	Vec2 m_HPGauge;
 
 	bool m_isEnd;
 };

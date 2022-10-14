@@ -23,7 +23,7 @@ void SceneMain::init()
 	m_pMenu.addItem("ITEM");
 	m_pMenu.addItem("MERCY");
 	
-	m_pMenu.setPos(320, 660);
+	m_pMenu.setPos(320, 640);
 	m_pMenu.setupCursor();
 	
 	m_pCheckFight = false;
@@ -32,7 +32,10 @@ void SceneMain::init()
 	m_pCheckItem = false;
 	m_pItem.init();
 
-	frameCount = 30;
+	m_pCheckStatus = true;
+	m_pStatus.init();
+
+	waitCount = 45;
 }
 
 void SceneMain::end()
@@ -40,6 +43,7 @@ void SceneMain::end()
 	m_pMenu.end();
 	m_pFight.end();
 	m_pItem.end();
+	m_pStatus.end();
 }
 
 void SceneMain::update()
@@ -71,15 +75,16 @@ void SceneMain::update()
 
 	if (m_pCheckMenu) m_pMenu.update();
 	
-	if (frameCount > 0)
+	if (waitCount > 0)
 	{
-		frameCount--;
+		waitCount--;
 	}
 	else
 	{
 		if (m_pCheckFight) m_pFight.update();
 		if (m_pCheckItem) m_pItem.update();
 	}
+	m_pStatus.update();
 }
 
 void SceneMain::draw()
@@ -90,4 +95,5 @@ void SceneMain::draw()
 	if (m_pCheckMenu) m_pMenu.draw();
 	if (m_pCheckFight) m_pFight.draw();
 	if (m_pCheckItem) m_pItem.draw();
+	m_pStatus.draw();
 }

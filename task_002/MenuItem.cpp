@@ -49,7 +49,7 @@ void MenuItem::end()
 
 void MenuItem::update()
 {
-	if (Pad::isTrigger(PAD_INPUT_3))
+	if (Pad::isTrigger(PAD_INPUT_1))
 	{
 		m_checkMenu = false;
 		m_checkMasage = true;
