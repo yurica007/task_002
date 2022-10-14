@@ -16,6 +16,8 @@ namespace
 MenuItem::MenuItem()
 {
 	m_isEnd = false;
+	m_checkMenu = false;
+	m_checkMasage = false;
 }
 
 MenuItem::~MenuItem()
@@ -26,6 +28,8 @@ MenuItem::~MenuItem()
 void MenuItem::init()
 {
 	m_isEnd = false;
+	m_checkMenu = true;
+	m_checkMasage = false;
 
 	m_menu.init();
 	m_menu.addItem("‚ ");
@@ -45,10 +49,17 @@ void MenuItem::end()
 
 void MenuItem::update()
 {
-	m_menu.update();
+	if (Pad::isTrigger(PAD_INPUT_3))
+	{
+		m_checkMenu = false;
+		m_checkMasage = true;
+	}
+
+	if (m_checkMasage) m_menu.displayItem();
+	if (m_checkMenu) m_menu.update();
 }
 
 void MenuItem::draw()
 {
-	m_menu.draw();
+	if (m_checkMenu) m_menu.draw();
 }

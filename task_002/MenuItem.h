@@ -19,6 +19,8 @@ public:
 
 private:
 	SelectItem m_menu;
+	bool m_checkMenu;
+	bool m_checkMasage;
 
 	bool m_isEnd;
 };
