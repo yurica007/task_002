@@ -14,7 +14,6 @@ namespace
 SelectMenu::Item::Item()
 {
 	m_text = nullptr;
-	checkItem = false;
 }
 
 SelectMenu::Item::~Item()
@@ -22,13 +21,9 @@ SelectMenu::Item::~Item()
 
 }
 
-void SelectMenu::Item::draw(int x, int y)
+void SelectMenu::Item::draw(int x, int y, int color)
 {
-	DrawString(x, y, m_text, GetColor(255, 130, 0));
-	if (checkItem)
-	{
-		DrawString(x, y, m_text, GetColor(255, 0, 0));
-	}
+	DrawString(x, y, m_text, color);
 }
 
 void SelectMenu::Item::setText(const char* text)
@@ -40,23 +35,40 @@ int SelectMenu::Item::getText()
 {
 	return GetDrawStringWidth(m_text, strlen(m_text));
 }
+
 // =====================================
-// SelectMenu::Cursor
+// SelectMenu
 // =====================================
-SelectMenu::Cursor::Cursor()
+SelectMenu::SelectMenu()
 {
+	m_pos.x = 0.0f;
+	m_pos.y = 0.0f;
 	m_selectIndex = 0;
 	m_itemNum = 0;
 	m_repeatLeft = 0;
 	m_repeatRight = 0;
 }
 
-SelectMenu::Cursor::~Cursor()
+SelectMenu::~SelectMenu()
 {
 
 }
 
-void SelectMenu::Cursor::update()
+void SelectMenu::init()
+{
+
+}
+void SelectMenu::end()
+{
+	for (auto& pItem : m_pItem)
+	{
+		delete pItem;
+	}
+	m_pItem.clear();
+
+}
+
+void SelectMenu::update()
 {
 	if (Pad::isPress(PAD_INPUT_LEFT))
 	{
@@ -114,63 +126,30 @@ void SelectMenu::Cursor::update()
 	{
 		m_repeatRight = 0;
 	}
-}
 
-void SelectMenu::Cursor::draw()
-{
-	int posX = m_menuPos.x + kMenuItemInterval * m_selectIndex;
-	int posY = m_menuPos.y;
-
-	DrawBox(posX, posY, posX + m_size.x, posY + m_size.y, GetColor(255, 0, 0), false);
-}
-
-// =====================================
-// SelectMenu
-// =====================================
-SelectMenu::SelectMenu()
-{
-	m_pos.x = 0.0f;
-	m_pos.y = 0.0f;
-}
-
-SelectMenu::~SelectMenu()
-{
-
-}
-
-void SelectMenu::init()
-{
-
-}
-void SelectMenu::end()
-{
-	for (auto& pItem : m_pItem)
-	{
-		delete pItem;
-	}
-	m_pItem.clear();
-
-}
-
-void SelectMenu::update()
-{
-	m_cursor.update();
 }
 
 void SelectMenu::draw()
 {
+	int color = 0;
 	for (int i = 0; i < m_pItem.size(); i++)
 	{
-		m_pItem[i]->draw(m_pos.x + i * kMenuItemInterval, m_pos.y);
+		if (i == m_selectIndex)
+		{
+			color = GetColor(255, 0, 0);
+		}
+		else
+		{
+			color = GetColor(255, 130, 0);
+		}
+		m_pItem[i]->draw(m_pos.x + i * kMenuItemInterval, m_pos.y, color);
 	}
-	m_cursor.draw();
 }
 
 void SelectMenu::setupCursor()
 {
-	m_cursor.setMenuPos(m_pos);
-	m_cursor.setSize(Vec2(getWindowWidth(), getWindowHeight()));
-	m_cursor.setItemNum(m_pItem.size());
+	setMenuPos(m_pos);
+	setItemNum(m_pItem.size());
 }
 
 void SelectMenu::setPos(float x, float y)
@@ -188,32 +167,4 @@ void SelectMenu::addItem(const char* text)
 	Item* pItem = new Item;
 	pItem->setText(text);
 	m_pItem.push_back(pItem);
-
-}
-
-int SelectMenu::getWindowWidth()
-{
-	int width = 0;
-	// 一番広いメニュー項目の幅をウィンドウサイズにする
-	for (auto& pItem : m_pItem)
-	{
-		if (width < pItem->getText())
-		{
-			width = pItem->getText();
-		}
-	}
-	return width;
-}
-int SelectMenu::getWindowHeight()
-{
-	int height = 0;
-	// 一番広いメニュー項目の幅をウィンドウサイズにする
-	for (auto& pItem : m_pItem)
-	{
-		if (height < pItem->getText())
-		{
-			height = pItem->getText();
-		}
-	}
-	return height / 2;
 }

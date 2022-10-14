@@ -31,7 +31,11 @@ public:
 	int getWindowWidth();
 	int getWindowHeight();
 
-	int getItemIndex() { return m_cursor.getSelectIndex(); }
+	void setMenuPos(Vec2 pos) { m_menuPos = pos; }
+	void setSize(Vec2 size) { m_size = size; }
+	void setItemNum(int num) { m_itemNum = num; }
+
+	int getItemIndex() { return m_selectIndex; }
 
 private:
 	class Item
@@ -41,7 +45,7 @@ private:
 		virtual ~Item();
 
 		// メニュー項目の表示
-		void draw(int x, int y);
+		void draw(int x, int y, int color);
 
 		// 表示する文字列を設定
 		void setText(const char* text);
@@ -51,41 +55,6 @@ private:
 	private:
 		// 表示する文字列
 		const char* m_text;
-
-		bool checkItem;
-	};
-
-	class Cursor
-	{
-	public:
-		Cursor();
-		virtual ~Cursor();
-
-		// 更新
-		void update();
-		// 表示
-		void draw();
-
-		void setMenuPos(Vec2 pos) { m_menuPos = pos; }
-		void setSize(Vec2 size) { m_size = size; }
-		void setItemNum(int num) { m_itemNum = num; }
-
-		int getSelectIndex() { return m_selectIndex; }
-
-	private:
-		// メニューの表示位置
-		Vec2 m_menuPos;
-		// カーソルのサイズ
-		Vec2 m_size;
-		// メニューの項目数
-		int m_itemNum;
-
-		// リピート入力カウンタ
-		int m_repeatLeft;
-		int m_repeatRight;
-
-		// 選択している項目の番号
-		int m_selectIndex;
 	};
 
 private:
@@ -93,6 +62,17 @@ private:
 	Vec2 m_pos;
 	// メニューの選択項目
 	std::vector<Item*> m_pItem;
-	// カーソル
-	Cursor m_cursor;
+	// メニューの表示位置
+	Vec2 m_menuPos;
+	// カーソルのサイズ
+	Vec2 m_size;
+	// メニューの項目数
+	int m_itemNum;
+
+	// リピート入力カウンタ
+	int m_repeatLeft;
+	int m_repeatRight;
+
+	// 選択している項目の番号
+	int m_selectIndex;
 };
