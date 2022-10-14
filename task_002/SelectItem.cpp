@@ -4,14 +4,6 @@
 
 namespace
 {
-	// 四角の中央の位置
-//	constexpr float kCenterPosX = 640.0f;
-//	constexpr float kCenterPosY = 500.0f;
-
-	// 四角の縦横の半径
-//	constexpr float kWidthLen = 360.0f;
-//	constexpr float kHeightLen = 120.0f;
-
 	constexpr float kSetPosX = 450.0f;
 	constexpr float kSetPosY = 420.0f;
 
@@ -70,7 +62,7 @@ void SelectItem::Cursor::update()
 		{
 			m_selectIndex--;
 			m_repeatUp = 8;
-			// 左右ループ
+			// 上下ループ
 			if (m_selectIndex < 0)
 			{
 				if (Pad::isPress(PAD_INPUT_UP))
@@ -128,7 +120,6 @@ void SelectItem::Cursor::draw()
 	int posY = m_menuPos.y + 30 * m_selectIndex + 5;
 
 	DrawCircle(posX, posY, kCircleRadius, GetColor(255, 255, 255), true);
-//	DrawBox(posX, posY, posX + m_size.x, posY + m_size.y, GetColor(255, 0, 0), false);
 }
 
 // =====================================
@@ -166,9 +157,6 @@ void SelectItem::update()
 
 void SelectItem::draw()
 {
-//	int width = getWindowWidth();
-//	int height = getWindowHeight();
-
 	for (int i = 0; i < m_pItem.size(); i++)
 	{
 		m_pItem[i]->draw(m_pos.x, m_pos.y + i * 30);
@@ -228,4 +216,23 @@ int SelectItem::getWindowHeight()
 		}
 	}
 	return height;
+}
+
+void SelectItem::displayItem()
+{
+	switch (m_cursor.getSelectIndex())
+	{
+	case 0:
+		DrawString(kSetPosX, kSetPosY, "あ", GetColor(255, 255, 255));
+	case 1:
+		DrawString(kSetPosX, kSetPosY, "い", GetColor(255, 255, 255));
+	case 2:
+		DrawString(kSetPosX, kSetPosY, "う", GetColor(255, 255, 255));
+	case 3:
+		DrawString(kSetPosX, kSetPosY, "え", GetColor(255, 255, 255));
+	case 4:
+		DrawString(kSetPosX, kSetPosY, "お", GetColor(255, 255, 255));
+	default:
+		break;
+	}
 }

@@ -31,6 +31,10 @@ public:
 	int getWindowWidth();
 	int getWindowHeight();
 
+	void displayItem();
+
+	int getSelectItem() { return m_cursor.getSelectIndex(); }
+
 private:
 	class Item
 	{
