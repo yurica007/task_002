@@ -34,7 +34,4 @@ void SceneTitle::draw()
 	SetFontSize(32);
 	DrawString(kTitlePosX, kTitlePosY, "タイトル表示確認", GetColor(255, 255, 255));
 	SetFontSize(16);
-	
-//	DrawString(kTextPosX, kTextPosY, "You'r name is", GetColor(255, 255, 255));
-//	KeyInputString(kTextPosX, kTextPosY + 30, kNameNum, neme, false);
 }
