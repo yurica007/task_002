@@ -1,7 +1,6 @@
 #pragma once
 
 #include "MenuBase.h"
-#include "SceneTitle.h"
 #include "Vec2.h"
 
 class MenuPlayerStatus : public MenuBase
@@ -18,8 +17,11 @@ public:
 	bool isEnd() { return m_isEnd; }
 
 private:
+	int remainHP;
+
 	Vec2 m_namePos;
 	Vec2 m_HPGauge;
+	Vec2 m_HPScore;
 
 	bool m_isEnd;
 };

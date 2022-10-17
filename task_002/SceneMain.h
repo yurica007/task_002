@@ -5,6 +5,7 @@
 #include "MenuFight.h"
 #include "MenuItem.h"
 #include "MenuPlayerStatus.h"
+#include "MenuEnemyStatus.h"
 
 class SceneMain : public SceneBase
 {
@@ -14,7 +15,8 @@ public:
 		m_isEnd = false;
 		m_pCheckFight = false;
 		m_pCheckItem = false;
-		m_pCheckStatus = false;
+		m_pCheckPlayerStatus = false;
+		m_pCheckEnemyStatus = false;
 		waitCount = 0;
 	}
 	virtual ~SceneMain() {}
@@ -39,8 +41,11 @@ private:
 	MenuItem m_pItem;
 	bool m_pCheckItem;
 
-	MenuPlayerStatus m_pStatus;
-	bool m_pCheckStatus;
+	MenuPlayerStatus m_pPlayerStatus;
+	bool m_pCheckPlayerStatus;
+
+	MenuEnemyStatus m_pEnemyStatus;
+	bool m_pCheckEnemyStatus;
 
 	int waitCount;
 };

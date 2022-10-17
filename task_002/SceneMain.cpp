@@ -32,8 +32,11 @@ void SceneMain::init()
 	m_pCheckItem = false;
 	m_pItem.init();
 
-	m_pCheckStatus = true;
-	m_pStatus.init();
+	m_pCheckPlayerStatus = true;
+	m_pPlayerStatus.init();
+
+	m_pCheckEnemyStatus = true;
+	m_pEnemyStatus.init();
 
 	waitCount = 45;
 }
@@ -43,7 +46,8 @@ void SceneMain::end()
 	m_pMenu.end();
 	m_pFight.end();
 	m_pItem.end();
-	m_pStatus.end();
+	m_pPlayerStatus.end();
+	m_pEnemyStatus.end();
 }
 
 void SceneMain::update()
@@ -84,7 +88,8 @@ void SceneMain::update()
 		if (m_pCheckFight) m_pFight.update();
 		if (m_pCheckItem) m_pItem.update();
 	}
-	m_pStatus.update();
+	m_pPlayerStatus.update();
+	m_pEnemyStatus.update();
 }
 
 void SceneMain::draw()
@@ -95,5 +100,6 @@ void SceneMain::draw()
 	if (m_pCheckMenu) m_pMenu.draw();
 	if (m_pCheckFight) m_pFight.draw();
 	if (m_pCheckItem) m_pItem.draw();
-	m_pStatus.draw();
+	m_pPlayerStatus.draw();
+	m_pEnemyStatus.draw();
 }

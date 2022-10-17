@@ -66,6 +66,9 @@
     <ClCompile Include="MenuPlayerStatus.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="MenuEnemyStatus.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -105,6 +108,9 @@
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="MenuPlayerStatus.h">
+      <Filter>ヘッダー ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuEnemyStatus.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
   </ItemGroup>
