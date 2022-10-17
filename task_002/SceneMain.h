@@ -4,7 +4,7 @@
 #include "SelectMenu.h"
 #include "MenuFight.h"
 #include "MenuItem.h"
-#include "MenuStatus.h"
+#include "MenuPlayerStatus.h"
 
 class SceneMain : public SceneBase
 {
@@ -39,7 +39,7 @@ private:
 	MenuItem m_pItem;
 	bool m_pCheckItem;
 
-	MenuStatus m_pStatus;
+	MenuPlayerStatus m_pStatus;
 	bool m_pCheckStatus;
 
 	int waitCount;

@@ -4,11 +4,11 @@
 #include "SceneTitle.h"
 #include "Vec2.h"
 
-class MenuStatus : public MenuBase
+class MenuPlayerStatus : public MenuBase
 {
 public:
-	MenuStatus();
-	virtual ~MenuStatus();
+	MenuPlayerStatus();
+	virtual ~MenuPlayerStatus();
 
 	void init();
 	void end();

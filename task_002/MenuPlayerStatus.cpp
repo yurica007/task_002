@@ -1,4 +1,4 @@
-#include "MenuStatus.h"
+#include "MenuPlayerStatus.h"
 #include "DxLib.h"
 
 namespace
@@ -7,7 +7,7 @@ namespace
 	constexpr float kGageSizeY = 15.0f;
 }
 
-MenuStatus::MenuStatus()
+MenuPlayerStatus::MenuPlayerStatus()
 {
 	m_namePos.x = 0.0f;
 	m_namePos.y = 0.0f;
@@ -17,12 +17,12 @@ MenuStatus::MenuStatus()
 	m_isEnd = false;
 }
 
-MenuStatus::~MenuStatus()
+MenuPlayerStatus::~MenuPlayerStatus()
 {
 
 }
 
-void MenuStatus::init()
+void MenuPlayerStatus::init()
 {
 	m_namePos.x = 420.0f;
 	m_namePos.y = 690.0f;
@@ -30,17 +30,17 @@ void MenuStatus::init()
 	m_HPGauge.y = m_namePos.y;
 }
 
-void MenuStatus::end()
+void MenuPlayerStatus::end()
 {
 	
 }
 
-void MenuStatus::update()
+void MenuPlayerStatus::update()
 {
 	
 }
 
-void MenuStatus::draw()
+void MenuPlayerStatus::draw()
 {
 	DrawStringF(m_namePos.x, m_namePos.y, "You", GetColor(255, 255, 255));
 	DrawBoxAA(m_HPGauge.x, m_HPGauge.y, m_HPGauge.x + kGageSizeX, m_HPGauge.y + kGageSizeY, GetColor(125, 125, 125), false);
