@@ -11,5 +11,5 @@ public:
 	virtual void update() {}
 	virtual void draw() {}
 
-	virtual bool inEnd() { return false; }
+	virtual bool isEnd() { return false; }
 };
