@@ -2,13 +2,24 @@
 
 #include "MenuBase.h"
 #include "Vec2.h"
-#include "SelectMenu.h"
 
 class MenuFight : public MenuBase
 {
 public:
-	MenuFight();
-	virtual ~MenuFight();
+	MenuFight()
+	{
+		m_damageCursorCenterX = 0.0f;
+		m_damageCursorPos.x = 0;
+		m_damageCursorPos.y = 0;
+		m_damageCursorVec = 0.0;
+
+		m_dealtDamage = 0.0f;
+		ATK = 0;
+
+		m_isEnd = false;
+		m_isReturn = false;
+	}
+	virtual ~MenuFight() {}
 
 	virtual void init();
 	virtual void end();
@@ -16,6 +27,7 @@ public:
 	virtual void draw();
 
 	virtual bool isEnd() { return m_isEnd; }
+	virtual bool isReturn() { return m_isReturn; }
 
 private:
 	// 攻撃カーソルの横の座標情報
@@ -31,4 +43,5 @@ private:
 	float m_dealtDamage;
 
 	bool m_isEnd;
+	bool m_isReturn;
 };
