@@ -13,18 +13,6 @@ namespace
 	constexpr float kHeightLen = 120.0f;
 }
 
-MenuItem::MenuItem()
-{
-	m_isEnd = false;
-	m_checkMenu = false;
-	m_checkMasage = false;
-}
-
-MenuItem::~MenuItem()
-{
-
-}
-
 void MenuItem::init()
 {
 	m_isEnd = false;
@@ -54,6 +42,7 @@ void MenuItem::update()
 		m_checkMenu = false;
 		m_checkMasage = true;
 	}
+	if (Pad::isTrigger(PAD_INPUT_2)) m_isEnd = true;
 
 	if (m_checkMasage) m_menu.displayItem();
 	if (m_checkMenu) m_menu.update();

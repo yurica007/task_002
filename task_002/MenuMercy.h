@@ -2,21 +2,16 @@
 
 #include "MenuBase.h"
 #include "Vec2.h"
-#include "SelectItem.h"
 
-class MenuItem : public MenuBase
+class MenuMercy : public MenuBase
 {
 public:
-	MenuItem()
+	MenuMercy()
 	{
 		m_isEnd = false;
 //		m_isReturn = false;
-
-		m_checkMenu = false;
-		m_checkMasage = false;
 	}
-
-	virtual ~MenuItem() {}
+	virtual ~MenuMercy() {}
 
 	virtual void init();
 	virtual void end();
@@ -29,9 +24,4 @@ public:
 private:
 	bool m_isEnd;
 //	bool m_isReturn;
-
-	SelectItem m_menu;
-	bool m_checkMenu;
-	bool m_checkMasage;
-
 };
