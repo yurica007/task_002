@@ -25,6 +25,18 @@
     <Filter Include="ヘッダー ファイル\Scene">
       <UniqueIdentifier>{ec35024e-4698-48c8-a5a8-c7ea17b41b69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Menu\Player">
+      <UniqueIdentifier>{c1a00c95-eae7-427a-94fa-77a62c4674d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Menu\Player">
+      <UniqueIdentifier>{afde8140-019d-4340-9662-f2f21ac7f93e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Menu\Enemy">
+      <UniqueIdentifier>{14937389-89f5-4140-a66e-e82d1b22a0ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Menu\Enemy">
+      <UniqueIdentifier>{ce523e31-04b4-4e53-af27-c13f057f72e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,16 +57,7 @@
     <ClCompile Include="MenuBase.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="MenuFight.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuItem.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="SceneBase.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
@@ -63,11 +66,38 @@
     <ClCompile Include="SceneTitle.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="MenuFight.cpp">
+      <Filter>ソース ファイル\Menu\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuItem.cpp">
+      <Filter>ソース ファイル\Menu\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuAct.cpp">
+      <Filter>ソース ファイル\Menu\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuMercy.cpp">
+      <Filter>ソース ファイル\Menu\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ShotPatternI.cpp">
+      <Filter>ソース ファイル\Menu\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCurcor.cpp">
+      <Filter>ソース ファイル\Menu\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuEnemyStatus.cpp">
+      <Filter>ソース ファイル\Menu\Player</Filter>
+    </ClCompile>
     <ClCompile Include="MenuPlayerStatus.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="MenuEnemyStatus.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnEnemy.cpp">
+      <Filter>ソース ファイル\Menu\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnPlayer.cpp">
+      <Filter>ソース ファイル\Menu\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,16 +119,7 @@
     <ClInclude Include="MenuBase.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="MenuFight.h">
-      <Filter>ヘッダー ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuItem.h">
-      <Filter>ヘッダー ファイル\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="SceneBase.h">
-      <Filter>ヘッダー ファイル\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMain.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
@@ -107,11 +128,38 @@
     <ClInclude Include="SceneTitle.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="MenuFight.h">
+      <Filter>ヘッダー ファイル\Menu\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuItem.h">
+      <Filter>ヘッダー ファイル\Menu\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuAct.h">
+      <Filter>ヘッダー ファイル\Menu\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuMercy.h">
+      <Filter>ヘッダー ファイル\Menu\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ShotPatternI.h">
+      <Filter>ヘッダー ファイル\Menu\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCursor.h">
+      <Filter>ヘッダー ファイル\Menu\Enemy</Filter>
+    </ClInclude>
     <ClInclude Include="MenuPlayerStatus.h">
       <Filter>ヘッダー ファイル\Menu</Filter>
     </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnEnemy.h">
+      <Filter>ヘッダー ファイル\Menu\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnPlayer.h">
+      <Filter>ヘッダー ファイル\Menu\Player</Filter>
+    </ClInclude>
     <ClInclude Include="MenuEnemyStatus.h">
-      <Filter>ヘッダー ファイル\Menu</Filter>
+      <Filter>ヘッダー ファイル\Menu\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

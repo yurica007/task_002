@@ -27,10 +27,6 @@ public:
 	// メニュー項目の追加
 	void addItem(const char* text);
 
-	// ウィンドウサイズの取得
-	int getWindowWidth();
-	int getWindowHeight();
-
 	void setMenuPos(Vec2 pos) { m_menuPos = pos; }
 	void setSize(Vec2 size) { m_size = size; }
 	void setItemNum(int num) { m_itemNum = num; }

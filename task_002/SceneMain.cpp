@@ -2,104 +2,50 @@
 #include "DxLib.h"
 #include "Pad.h"
 
-namespace
-{
-	constexpr float kCenterPosX = 640.0f;
-	constexpr float kCenterPosY = 500.0f;
-
-	constexpr float kWidthLen = 360.0f;
-	constexpr float kHeightLen = 120.0f;
-}
-
 void SceneMain::init()
 {
 	m_isEnd = false;
+	m_playerTurn = true;
 
-	m_pCheckMenu = true;
-	m_pMenu.init();
-
-	m_pMenu.addItem("FIGHT");
-	m_pMenu.addItem("ACT");
-	m_pMenu.addItem("ITEM");
-	m_pMenu.addItem("MERCY");
+	m_turnPlayer.init();
+	m_turnEnemy.init();
 	
-	m_pMenu.setPos(320, 640);
-	m_pMenu.setupCursor();
-	
-	m_pCheckFight = false;
-	m_pFight.init();
-
-	m_pCheckItem = false;
-	m_pItem.init();
-
 	m_pCheckPlayerStatus = true;
 	m_pPlayerStatus.init();
 
 	m_pCheckEnemyStatus = true;
 	m_pEnemyStatus.init();
-
-	waitCount = 45;
 }
 
 void SceneMain::end()
 {
-	m_pMenu.end();
-	m_pFight.end();
-	m_pItem.end();
+	m_turnPlayer.end();
+	m_turnEnemy.end();
 	m_pPlayerStatus.end();
 	m_pEnemyStatus.end();
 }
 
 void SceneMain::update()
 {
-	if (Pad::isTrigger(PAD_INPUT_2))
-	{
-		m_isEnd = true;
-	}
-	switch (m_pMenu.getItemIndex())
-	{
-	
-	case 0:
-		if (Pad::isTrigger(PAD_INPUT_1))
-		{
-			m_pCheckMenu = false;
-			m_pCheckFight = true;
-		}
-		break;
-	case 2:
-		if (Pad::isTrigger(PAD_INPUT_1))
-		{
-			m_pCheckMenu = false;
-			m_pCheckItem = true;
-		}
-		break;
-	default:
-		break;
-	}
+	m_playerTurn = m_turnPlayer.isTurnEnd();
 
-	if (m_pCheckMenu) m_pMenu.update();
-	
-	if (waitCount > 0)
+	if (m_playerTurn)
 	{
-		waitCount--;
+		m_turnPlayer.update();
 	}
 	else
 	{
-		if (m_pCheckFight) m_pFight.update();
-		if (m_pCheckItem) m_pItem.update();
+		m_turnEnemy.update();
 	}
+
 	m_pPlayerStatus.update();
 	m_pEnemyStatus.update();
 }
 
 void SceneMain::draw()
 {
-	DrawBox(kCenterPosX - kWidthLen, kCenterPosY - kHeightLen,
-		kCenterPosX + kWidthLen, kCenterPosY + kHeightLen, GetColor(255, 255, 255), false);
-
-	if (m_pCheckMenu) m_pMenu.draw();
-	if (m_pCheckFight) m_pFight.draw();
-	if (m_pCheckItem) m_pItem.draw();
+	if (m_playerTurn) m_turnPlayer.draw();
+	else m_turnEnemy.draw();
 	m_pPlayerStatus.draw();
 	m_pEnemyStatus.draw();
 }

@@ -9,10 +9,10 @@ public:
 	MenuPlayerStatus();
 	virtual ~MenuPlayerStatus();
 
-	void init();
-	void end();
-	void update();
-	void draw();
+	virtual void init();
+	virtual void end();
+	virtual void update();
+	virtual void draw();
 
 	bool isEnd() { return m_isEnd; }
 

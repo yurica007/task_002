@@ -44,7 +44,7 @@ void MenuPlayerStatus::end()
 
 void MenuPlayerStatus::update()
 {
-	remainHP -= 1;
+	remainHP = kHPMax;
 }
 
 void MenuPlayerStatus::draw()

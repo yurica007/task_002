@@ -9,10 +9,10 @@ public:
 	MenuEnemyStatus();
 	virtual ~MenuEnemyStatus();
 
-	void init();
-	void end();
-	void update();
-	void draw();
+	virtual void init();
+	virtual void end();
+	virtual void update();
+	virtual void draw();
 
 	bool isEnd() { return m_isEnd; }
 
@@ -20,5 +20,5 @@ private:
 	int remainHP;
 	Vec2 m_HPGauge;
 
-	bool m_isEnd;
+	bool m_isEnd;	
 };

@@ -1,27 +1,27 @@
 #pragma once
-#include "SceneBase.h"
-#include "SelectMenu.h"
 
-namespace
-{
-	constexpr char kNameNum = 31;
-}
+#include "MenuBase.h"
+#include "Vec2.h"
 
-class SceneTitle : public SceneBase
+class MenuAct : public MenuBase
 {
 public:
-	SceneTitle() {
+	MenuAct()
+	{
 		m_isEnd = false;
+//		m_isReturn = false;
 	}
-	virtual ~SceneTitle() {}
+	virtual ~MenuAct() {}
 
 	virtual void init();
 	virtual void end();
 	virtual void update();
 	virtual void draw();
+
 	virtual bool isEnd() { return m_isEnd; }
+//	virtual bool isReturn() { return m_isReturn; }
 
 private:
 	bool m_isEnd;
-
+//	bool m_isReturn;
 };

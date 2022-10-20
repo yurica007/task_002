@@ -4,17 +4,22 @@
 
 SceneManager::SceneManager()
 {
-	m_kind = kSceneKindTitle;
+	m_Scenekind = kSceneKindTitle;
+	m_Menukind = kMenuKindNum;
+	isEnd = false;
+	isReturn = false;
 }
 SceneManager::~SceneManager()
 {
 
 }
 
-void SceneManager::init(SceneKind kind)
+void SceneManager::init()
 {
-	m_kind = kind;
-	switch (m_kind)
+	SceneKind sceneKind = kSceneKindTitle;
+	m_Scenekind = sceneKind;
+
+	switch (m_Scenekind)
 	{
 	case SceneManager::kSceneKindTitle:
 		m_title.init();
@@ -22,7 +27,6 @@ void SceneManager::init(SceneKind kind)
 	case SceneManager::kSceneKindMain:
 		m_main.init();
 		break;
-	case SceneManager::kSceneKindNum:
 	default:
 		assert(false);
 		break;
@@ -31,7 +35,7 @@ void SceneManager::init(SceneKind kind)
 
 void SceneManager::end()
 {
-	switch (m_kind)
+	switch (m_Scenekind)
 	{
 	case SceneManager::kSceneKindTitle:
 		m_title.end();
@@ -39,7 +43,6 @@ void SceneManager::end()
 	case SceneManager::kSceneKindMain:
 		m_main.end();
 		break;
-	case SceneManager::kSceneKindNum:
 	default:
 		assert(false);
 		break;
@@ -50,8 +53,7 @@ void SceneManager::update()
 {
 	Pad::update();
 
-	bool isEnd = false;
-	switch (m_kind)
+	switch (m_Scenekind)
 	{
 	case SceneManager::kSceneKindTitle:
 		m_title.update();
@@ -61,26 +63,25 @@ void SceneManager::update()
 		m_main.update();
 		isEnd = m_main.isEnd();
 		break;
-	case SceneManager::kSceneKindNum:
 	default:
 		assert(false);
 		break;
 	}
+	
 	if (isEnd)
 	{
-		switch (m_kind)
+		switch (m_Scenekind)
 		{
 		case SceneManager::kSceneKindTitle:
 			m_title.end();
 			m_main.init();
-			m_kind = kSceneKindMain;
+			m_Scenekind = kSceneKindMain;
 			break;
 		case SceneManager::kSceneKindMain:
 			m_main.end();
 			m_title.init();
-			m_kind = kSceneKindTitle;
+			m_Scenekind = kSceneKindTitle;
 			break;
-		case SceneManager::kSceneKindNum:
 		default:
 			assert(false);
 			break;
@@ -90,7 +91,7 @@ void SceneManager::update()
 
 void SceneManager::draw()
 {
-	switch (m_kind)
+	switch (m_Scenekind)
 	{
 	case SceneManager::kSceneKindTitle:
 		m_title.draw();
@@ -98,7 +99,6 @@ void SceneManager::draw()
 	case SceneManager::kSceneKindMain:
 		m_main.draw();
 		break;
-	case SceneManager::kSceneKindNum:
 	default:
 		assert(false);
 		break;
